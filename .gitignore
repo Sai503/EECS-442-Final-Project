@@ -126,3 +126,4 @@ dmypy.json
 
 # data files
 /mini-edges2shoes/*
+.DS_Store
