@@ -129,3 +129,7 @@ dmypy.json
 .DS_Store
 /MSFT 1M FACES/*
 *.zip
+.zip
+*.jpeg
+
+*.jpg
