@@ -38,6 +38,8 @@ baseImgPath = "2023-09-02_17-39-32_502.jpeg"
 searchFolder = "scanning_images/"
 outputFolder = "output_matches/"
 model_image_size = 160 # assume square image
+pretrained_treshold = 1.3
+selftrained_threshold = 1.3
 
 # load the base image with pillow
 baseImg = Image.open(baseImgPath)
@@ -101,6 +103,16 @@ for path in Path(searchFolder).iterdir():
                     print(embed.shape)
                     print(type(embed))
 
-                # compare embeddings
+                    # compare embeddings
+                    dist = torch.linalg.norm(baseEmbedding - embed, ord=2)
+                    print(dist)
+                    if dist < pretrained_treshold: # manual tuning
+                        print("match!")
+                        # save image to output folder
+                        torchvision.utils.save_image(faces[i], outputFolder + path.name)
+                        # save full image to output folder
+                        img.save(outputFolder + path.stem + "_original.jpeg")
+                        break
+                        # break
 
 
