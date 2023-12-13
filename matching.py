@@ -38,8 +38,8 @@ baseImgPath = "George_W_Bush_0001.jpg"
 searchFolder = "scanning_images/"
 outputFolder = "output_matches/"
 model_image_size = 112 # assume square image
-pretrained_treshold = 1.3
-selftrained_threshold = 1.3
+pretrained_treshold = 0.9
+selftrained_threshold = 0.9
 
 # load the base image with pillow
 baseImg = Image.open(baseImgPath)
@@ -176,7 +176,7 @@ for path in Path(searchFolder).iterdir():
                     # compare embeddings
                     dist = torch.linalg.norm(baseEmbedding - embed, ord=2)
                     print(dist)
-                    if dist < pretrained_treshold: # manual tuning
+                    if dist < selftrained_threshold: # manual tuning
                         print("match!")
                         # save image to output folder
                         torchvision.utils.save_image(faces[i], outputFolder + path.name)
