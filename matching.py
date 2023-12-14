@@ -40,6 +40,8 @@ outputFolder = "output_matches/"
 model_image_size = 112 # assume square image
 pretrained_treshold = 0.9
 selftrained_threshold = 0.9
+pretrained_margin = 0
+selftrained_margin =30
 
 # load the base image with pillow
 baseImg = Image.open(baseImgPath)
@@ -123,7 +125,7 @@ model.eval()
 
 # load mtcnn 
 mtcnn = MTCNN(
-    image_size=model_image_size, margin=0, min_face_size=20,
+    image_size=model_image_size, margin=selftrained_margin, min_face_size=20,
     thresholds=[0.6, 0.7, 0.7], factor=0.709, post_process=True,
     device=device,
     keep_all=True

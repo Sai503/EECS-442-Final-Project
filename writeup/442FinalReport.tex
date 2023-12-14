@@ -21,7 +21,7 @@
 
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 %\ifcvprfinal\pagestyle{empty}\fi
-\setcounter{page}{4321}
+\setcounter{page}{1}
 \begin{document}
 
 %%%%%%%%% TITLE
@@ -46,409 +46,123 @@ Ann Arbor, MI\\
 \maketitle
 %\thispagestyle{empty}
 
-%%%%%%%%% ABSTRACT
-\begin{abstract}
-   The ABSTRACT is to be in fully-justified italicized text, at the top
-   of the left-hand column, below the author and affiliation
-   information. Use the word ``Abstract'' as the title, in 12-point
-   Times, boldface type, centered relative to the column, initially
-   capitalized. The abstract is to be in 10-point, single-spaced type.
-   Leave two blank lines after the Abstract, then begin the main text.
-   Look at previous CVPR abstracts to get a feel for style and length.
-\end{abstract}
 
 %%%%%%%%% BODY TEXT
 \section{Introduction}
-
-Please follow the steps outlined below when submitting your manuscript to
-the IEEE Computer Society Press.  This style guide now has several
-important modifications (for example, you are no longer warned against the
-use of sticky tape to attach your artwork to the paper), so all authors
-should read this new version.
-
+The goal of the project is to create a face matching system that can recognize a person's face and find other pictures of the same person by utilizing the Google Facenet model.
+This type of system is quite common and is today part of the default functionality of common photo storage and photo sharing applications and services including Apple Photos, Google Photos, and Amazon Photos.
+These applications automatically scan all photos and create albums for each unique person (or even animal) found. Given that this functionality is commercially available (with generally good efficacy), 
+there is no practical application to this project. 
+It primarily serves as an educational experience and a tool to demonstrate my learning in taking EECS 442.
+Combined with a simple user interface, it can serve as a simple and quite visual demonstration that can be shown to others. 
 %-------------------------------------------------------------------------
-\subsection{Language}
 
-All manuscripts must be in English.
+\section{Related Work}
+Facenet (2014) was part of the first generation of models which applied Convolutional Neural Networks (CNN's) to the task of Face recognition.
+The earliest models (such as Eigenfaces, 1991) utilized various forms of principal component analysis and created vector embeddings representing the combination of base “eigen pictures” that would recreate the original face.
+Later methods would continue to build on this work without Neural Networks, with algorithms such as the Discriminant Face Descriptor achieving 80\% accuracy on the Labeled Faces in the Wild (LFW) Dataset.\\
 
-\subsection{Dual submission}
+However by utilizing Neural Networks, algorithms such as Facebook's deepface and Google's Facenet would match or exceed human performance on popular datasets such as Labeled Faces in the Wild.\\
 
-Please refer to the author guidelines on the CVPR 2020 web page for a
-discussion of the policy on dual submissions.
+Although Facenet and related models represented a big advancement in 2014, facial recognition models have continued to advance since then.
+Apple's on-device face recognition model is built on the AirFace face recognition model that utilizes a linear version of the ArcFace angular loss function.
+This is then combined with a body embedding model to boost accuracy and reliability. 
 
-\subsection{Paper length}
-Papers, excluding the references section,
-must be no longer than eight pages in length. The references section
-will not be included in the page count, and there is no limit on the
-length of the references section. For example, a paper of eight pages
-with two pages of references would have a total length of 10 pages.
-{\bf There will be no extra page charges for CVPR 2020.}
-
-Overlength papers will simply not be reviewed.  This includes papers
-where the margins and formatting are deemed to have been significantly
-altered from those laid down by this style guide.  Note that this
-\LaTeX\ guide already sets figure captions and references in a smaller font.
-The reason such papers will not be reviewed is that there is no provision for
-supervised revisions of manuscripts.  The reviewing process cannot determine
-the suitability of the paper for presentation in eight pages if it is
-reviewed in eleven.  
-
-%-------------------------------------------------------------------------
-\subsection{The ruler}
-The \LaTeX\ style defines a printed ruler which should be present in the
-version submitted for review.  The ruler is provided in order that
-reviewers may comment on particular lines in the paper without
-circumlocution.  If you are preparing a document using a non-\LaTeX\
-document preparation system, please arrange for an equivalent ruler to
-appear on the final output pages.  The presence or absence of the ruler
-should not change the appearance of any other content on the page.  The
-camera ready copy should not contain a ruler. (\LaTeX\ users may uncomment
-the \verb'\cvprfinalcopy' command in the document preamble.)  Reviewers:
-note that the ruler measurements do not align well with lines in the paper
---- this turns out to be very difficult to do well when the paper contains
-many figures and equations, and, when done, looks ugly.  Just use fractional
-references (e.g.\ this line is $095.5$), although in most cases one would
-expect that the approximate location will be adequate.
-
-\subsection{Mathematics}
-
-Please number all of your sections and displayed equations.  It is
-important for readers to be able to refer to any particular equation.  Just
-because you didn't refer to it in the text doesn't mean some future reader
-might not need to refer to it.  It is cumbersome to have to use
-circumlocutions like ``the equation second from the top of page 3 column
-1''.  (Note that the ruler will not be present in the final copy, so is not
-an alternative to equation numbers).  All authors will benefit from reading
-Mermin's description of how to write mathematics:
-\url{http://www.pamitc.org/documents/mermin.pdf}.
-
-
-\subsection{Blind review}
-
-Many authors misunderstand the concept of anonymizing for blind
-review.  Blind review does not mean that one must remove
-citations to one's own work---in fact it is often impossible to
-review a paper unless the previous citations are known and
-available.
-
-Blind review means that you do not use the words ``my'' or ``our''
-when citing previous work.  That is all.  (But see below for
-techreports.)
-
-Saying ``this builds on the work of Lucy Smith [1]'' does not say
-that you are Lucy Smith; it says that you are building on her
-work.  If you are Smith and Jones, do not say ``as we show in
-[7]'', say ``as Smith and Jones show in [7]'' and at the end of the
-paper, include reference 7 as you would any other cited work.
-
-An example of a bad paper just asking to be rejected:
-\begin{quote}
-\begin{center}
-    An analysis of the frobnicatable foo filter.
-\end{center}
-
-   In this paper we present a performance analysis of our
-   previous paper [1], and show it to be inferior to all
-   previously known methods.  Why the previous paper was
-   accepted without this analysis is beyond me.
-
-   [1] Removed for blind review
-\end{quote}
-
-
-An example of an acceptable paper:
-
-\begin{quote}
-\begin{center}
-     An analysis of the frobnicatable foo filter.
-\end{center}
-
-   In this paper we present a performance analysis of the
-   paper of Smith \etal [1], and show it to be inferior to
-   all previously known methods.  Why the previous paper
-   was accepted without this analysis is beyond me.
-
-   [1] Smith, L and Jones, C. ``The frobnicatable foo
-   filter, a fundamental contribution to human knowledge''.
-   Nature 381(12), 1-213.
-\end{quote}
-
-If you are making a submission to another conference at the same time,
-which covers similar or overlapping material, you may need to refer to that
-submission in order to explain the differences, just as you would if you
-had previously published related work.  In such cases, include the
-anonymized parallel submission~\cite{Authors14} as additional material and
-cite it as
-\begin{quote}
-[1] Authors. ``The frobnicatable foo filter'', F\&G 2014 Submission ID 324,
-Supplied as additional material {\tt fg324.pdf}.
-\end{quote}
-
-Finally, you may feel you need to tell the reader that more details can be
-found elsewhere, and refer them to a technical report.  For conference
-submissions, the paper must stand on its own, and not {\em require} the
-reviewer to go to a techreport for further details.  Thus, you may say in
-the body of the paper ``further details may be found
-in~\cite{Authors14b}''.  Then submit the techreport as additional material.
-Again, you may not assume the reviewers will read this material.
-
-Sometimes your paper is about a problem which you tested using a tool which
-is widely known to be restricted to a single institution.  For example,
-let's say it's 1969, you have solved a key problem on the Apollo lander,
-and you believe that the CVPR70 audience would like to hear about your
-solution.  The work is a development of your celebrated 1968 paper entitled
-``Zero-g frobnication: How being the only people in the world with access to
-the Apollo lander source code makes us a wow at parties'', by Zeus \etal.
-
-You can handle this paper like any other.  Don't write ``We show how to
-improve our previous work [Anonymous, 1968].  This time we tested the
-algorithm on a lunar lander [name of lander removed for blind review]''.
-That would be silly, and would immediately identify the authors. Instead
-write the following:
-\begin{quotation}
-\noindent
-   We describe a system for zero-g frobnication.  This
-   system is new because it handles the following cases:
-   A, B.  Previous systems [Zeus et al. 1968] didn't
-   handle case B properly.  Ours handles it by including
-   a foo term in the bar integral.
-
-   ...
-
-   The proposed system was integrated with the Apollo
-   lunar lander, and went all the way to the moon, don't
-   you know.  It displayed the following behaviours
-   which show how well we solved cases A and B: ...
-\end{quotation}
-As you can see, the above text follows standard scientific convention,
-reads better than the first version, and does not explicitly name you as
-the authors.  A reviewer might think it likely that the new paper was
-written by Zeus \etal, but cannot make any decision based on that guess.
-He or she would have to be sure that no other authors could have been
-contracted to solve problem B.
-\medskip
-
-\noindent
-FAQ\medskip\\
-{\bf Q:} Are acknowledgements OK?\\
-{\bf A:} No.  Leave them for the final copy.\medskip\\
-{\bf Q:} How do I cite my results reported in open challenges?
-{\bf A:} To conform with the double blind review policy, you can report results of other challenge participants together with your results in your paper. For your results, however, you should not identify yourself and should not mention your participation in the challenge. Instead present your results referring to the method proposed in your paper and draw conclusions based on the experimental comparison to other results.\medskip\\
-
-
+\section{Method}
+The Facenet paper didn't create a new network architecture.
+Instead it modified two previous architectures, one from Zeiler\&Fergus labeled NN1, and the other by C.Szegedy et.al. labeled NN2 which were originally created for image classification.
+The minor modifications led to a 128 dimension embedding vector as the output.
+These were then trained by utilizing a triplet loss function where each sample consists of 3 images (as embeddings): an anchor, a positive (representing the same identity as the anchor), and a negative(representing a different identity).
+The loss function attempts to minimize the difference between the l2 distance from the anchor to the positive, maximize the l2 distance from the anchor to the negative plus a constant margin as shown in the equation below.\\
+\begin{equation}
+   \sum_{i}^{N} \left[\|f(x_i^a) - f(x_i^p) \|_2^2 - \|f(x_i^a) - f(x_i^n) \|_2^2 + \alpha\right]_+
+\end{equation}
+The big contribution of the Facenet paper was the utilization of an online triplet selection algorithm.
+Traditionally triplets would be pre-generated which could lead to issues as if the negative vector was already very far, the model would learn slowly.
+Alternatively if the negative vectors were already very close (and therefore “hard”), it could lead to a local minima in training.
+To combat this, the paper generated triplets during training (or “online”) for each batch by generating all possible anchor-positive pairs and selecting a “hard” negative for each.\\
 
 \begin{figure}[t]
-\begin{center}
-\fbox{\rule{0pt}{2in} \rule{0.9\linewidth}{0pt}}
-   %\includegraphics[width=0.8\linewidth]{egfigure.eps}
-\end{center}
-   \caption{Example of caption.  It is set in Roman so that mathematics
-   (always set in Roman: $B \sin A = A \sin B$) may be included without an
-   ugly clash.}
-\label{fig:long}
-\label{fig:onecol}
-\end{figure}
+   \begin{center}
+      \includegraphics[width=0.8\linewidth]{NN1.png}
+   \end{center}
+      \caption{NN1 by Zeiler\&Fergus }
+   \label{fig:NN1}
+   \end{figure}
 
-\subsection{Miscellaneous}
-
-\noindent
-Compare the following:\\
-\begin{tabular}{ll}
- \verb'$conf_a$' &  $conf_a$ \\
- \verb'$\mathit{conf}_a$' & $\mathit{conf}_a$
-\end{tabular}\\
-See The \TeX book, p165.
-
-The space after \eg, meaning ``for example'', should not be a
-sentence-ending space. So \eg is correct, {\em e.g.} is not.  The provided
-\verb'\eg' macro takes care of this.
-
-When citing a multi-author paper, you may save space by using ``et alia'',
-shortened to ``\etal'' (not ``{\em et.\ al.}'' as ``{\em et}'' is a complete word.)
-However, use it only when there are three or more authors.  Thus, the
-following is correct: ``
-   Frobnication has been trendy lately.
-   It was introduced by Alpher~\cite{Alpher02}, and subsequently developed by
-   Alpher and Fotheringham-Smythe~\cite{Alpher03}, and Alpher \etal~\cite{Alpher04}.''
-
-This is incorrect: ``... subsequently developed by Alpher \etal~\cite{Alpher03} ...''
-because reference~\cite{Alpher03} has just two authors.  If you use the
-\verb'\etal' macro provided, then you need not worry about double periods
-when used at the end of a sentence as in Alpher \etal.
-
-For this citation style, keep multiple citations in numerical (not
-chronological) order, so prefer \cite{Alpher03,Alpher02,Authors14} to
-\cite{Alpher02,Alpher03,Authors14}.
+In their experiments, both NN1 and NN2 (while having different numbers of parameters) both had similar accuracy levels, so I chose to implement NN1 as shown in figure \ref{fig:NN1}.
+To do this I replicated all the layers in pytorch except for the “concat” layer as I didn't fully understand what operation was taking place, and added padding as necessary to achieve the same output sizes.
+For training data I utilized Microsoft's DigiFace-1M dataset which consists of 1 Million synthetically generated faces.
+However due to the comparatively low resolution of these images (112 by 112px), I chose to remove the maxout pooling operations from between the linear layers to prevent a dimensional reduction below 128.
+Additionally as I was unable to figure out how to perform effieient triplet selection, I utilized triplet selection code from Adam Bielski's siamese-triplet github repository
 
 
 \begin{figure*}
-\begin{center}
-\fbox{\rule{0pt}{2in} \rule{.9\linewidth}{0pt}}
-\end{center}
-   \caption{Example of a short caption, which should be centered.}
-\label{fig:short}
-\end{figure*}
+   \begin{center}
+      \includegraphics[width=0.8\linewidth]{False Positives.png}
+   \end{center}
+      \caption{Sample False Positives.}
+   \label{fig:falsePositives}
+   \end{figure*}
 
-%------------------------------------------------------------------------
-\section{Formatting your paper}
+\section{Experiments}
+The model was trained on google colab on the v100 gpu.
+Due to memory limitations and for speed of training, the batch size was limited to 10 identities with 20 photos per identity.
+Across 400 batches, this led to a total training set size of 80k images taking 3.57 hours to complete 50 epochs.\\
+This is in contrast to the original paper which utilized between 100M-200M images with 1800 images per batch.
+The original paper trained the model on a cpu cluster which ran for between 1000-2000 hours.
+For learning parameters, the original paper utilized Adagrad with a triplet loss margin of 0.2 and a learning rate of 0.05.
+In my implementation I replicated these parameters except for the learning rate decay which I arbitrarily set at a constant 0.001 as the paper provided no further explanation beyond the statement that they lowered the learning rate to finalize the model.\\
 
-All text must be in a two-column format. The total allowable width of the
-text area is $6\frac78$ inches (17.5 cm) wide by $8\frac78$ inches (22.54
-cm) high. Columns are to be $3\frac14$ inches (8.25 cm) wide, with a
-$\frac{5}{16}$ inch (0.8 cm) space between them. The main title (on the
-first page) should begin 1.0 inch (2.54 cm) from the top edge of the
-page. The second and following pages should begin 1.0 inch (2.54 cm) from
-the top edge. On all pages, the bottom margin should be 1-1/8 inches (2.86
-cm) from the bottom edge of the page for $8.5 \times 11$-inch paper; for A4
-paper, approximately 1-5/8 inches (4.13 cm) from the bottom edge of the
-page.
+For testing I utilized the LFW dataset by combining all 530 images of George W. Bush (the most of any person in the dataset) with XX images from all people whose names start with the letter A.
+As a baseline, I utilized a pretrained model from the facenet\_pytorch library to match images of Bush given a single image of him.
+Both models were provided with resized and normalized face snippets from the MTCNN model in the facenet\_pytorch library.
+The pretrained model unsurprisingly performed well with a 98.4\% accuracy rate.
+Given the same task, my model matched 368 out of 529 images giving it a 69.4\% accuracy rate.
+However it also matched 382 out of 1054 negatives giving it a 36.2\% false positive rate as shown in figure \ref{fig:falsePositives}.\\
 
-%-------------------------------------------------------------------------
-\subsection{Margins and page numbering}
+As a smaller experiment, I attempted to utilize personal photos however the model performed poorly.
+Out of 10 personal photos, with 5 containing myself, the model matched 4 images without myself and one image with me where it matched on another person.
+This is likely due to the fact that the LFW dataset comprises public (likely professionally taken) images of public figures which would most likely be from various press-conferences or other public events where there is likely to be good lighting and the subject is most likely centered and in focus.
+Additionally the LFW images where most likely taken with DSLR cameras which have a depth of field effect not present in most smartphone images unless added digitally.
 
-All printed material, including text, illustrations, and charts, must be kept
-within a print area 6-7/8 inches (17.5 cm) wide by 8-7/8 inches (22.54 cm)
-high.
-Page numbers should be in footer with page numbers, centered and .75
-inches from the bottom of the page and make it start at the correct page
-number rather than the 4321 in the example.  To do this fine the line (around
-line 23)
-\begin{verbatim}
-%\ifcvprfinal\pagestyle{empty}\fi
-\setcounter{page}{4321}
+
+\section{Conclusion}
+\begin{figure}[t]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth]{14.png}
+   \end{center}
+      \caption{Sample image from DigiFace-1M dataset }
+   \label{fig:face}
+\end{figure}
+As stated earlier, this project has no practical application given the modern prevalence of highly accurate commercial solutions.
+As an academic exercise, one can consider many potential improvements to the training of the model including the usage of larger batch sizes with more identities which could enable the selection of better triplets leading to faster training.
+There is also likely a data quality issue.
+Although the Microsoft DigiFace dataset provided a large number of samples, being digitally generated they are likely to not be fully representative of real images and generally lack the level of detail present in real images.
+This can be seen visually in Figure \ref{fig:face} where the synthetic images appear blurry and distorted.
+Additionally the images were of a uniform and low resolution of 112x112px compared to Google's dataset which had images across a range of resolutions from 94-244px which would likely prevent the model from overfitting as the images are more varied.
+The Facenet paper also provided relatively little information on learning rate decay, experimenting with this will likely lead to improvements as I simply chose an arbitrary constant decay rate of 0.001.\\
+
+
+However the bigger takeaways are in my opinion personal. This project revealed that I had core misunderstandings about CNN's and Machine Learning in general.
+One of the biggest issues was that I didn't understand how to switch from a convolutional layer, with a tensor of shape [batch size, depth, width, height] to a linear layer which requires the tensor to be reshaped into 2d with dimensions [batch size, depth x width x height].
+When I first attempted to build the network I simply set the parameters to the desired depth and assumed that pytorch would automatically perform the correct operation.
+Similarly I found that I lacked a full understanding of how to vectorize algorithms which led me to utilize pre-written triplett selection code from Adam Bielski's siamese-triplet github repository.
+This experience has taught me that there is still a lot more to learn in this field and I anticipate further growth as I continue my educational and professional career.
+
+
+\section{References}
+https://machinelearning.apple.com/research/recognizing-people-photos\\
+https://github.com/adambielski/siamese-triplet\\
+https://github.com/timesler/facenet-pytorch\\
+Facenet: https://arxiv.org/abs/1503.03832\\
+Deepface: \begin{verbatim}https://scontent-cgk1-1.xx.fbcdn.net/v/t39.8562-6/240890413_887772915161178_4705912772854439762_n.pdf?_nc_cat=109&ccb=1-7&_nc_sid=e280be&_nc_ohc=aBdItnQKHZ8AX84q8dl&_nc_ht=scontent-cgk1-1.xx&oh=00_AfBDjSTZG9NsOLcNkq2u6z9JGtvFET756lWffW5Ab8I1AA&oe=657FF27F\end{verbatim}
+Airface: \begin{verbatim}https://arxiv.org/pdf/1907.12256.pdf\end{verbatim}
+Eigenfaces: \begin{verbatim}
+https://watermark.silverchair.com/jocn.1991.3.1.71.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAA0QwggNABgkqhkiG9w0BBwagggMxMIIDLQIBADCCAyYGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMUiv3zocAFNGM9C4VAgEQgIIC92e61Fsz2G8f2mUnuskvtgm4l-qfLJqb-1eFNhFOh_Tk5egA-1qsYXguZng6KaBDo8TCCMsYgSe14wxc7FY8ZZQESrGcrMFqBqQh7v3Sy99zEb6E_xxfeLfYgbvNwX7Im1WkQDi_FjB3zu3QExFpMYKdWBA5A0BjZ6IYs9AnWOrTEypl4T8i83XYltBWGyophE2iTO8hu5cOYXOo7e94mAcE_9YyvkB-8Nog3dVb3AY2E-GDoLvyNyQj7lwxTJQL_SoJXp8EcUl80V6heEMsp_PVgdEcGf7kZvxitltNLCNr8S3UhL4uBO59MWMD4sAoDH-xfnemKbFmVE33LpQPrWPehG81DheWoBwIoWYOnNirQDKV-0sSS-nLKUDOujW-KWpp8m-QrcSHJJbKz-G_kjDLTBwYUTd8tXSFUpyANvcaHUBE04lFyGL2yc3fcX4CL5BNJj3KjrGBJyYGTDfLK5xgJDb2weY1FBtybdVnft8SkgZs1YQmZTi73wxTD9xt7YjQf0G17ZQwuj0-FOp13nFfiDaXY3G3oCJ_790PYcTht622DGbMKmLds5Ae4p4bfKaa6AAZxcy3WfdcJGiu2SMzmDFvYy-aUQ8aX7uDCAgv8i5OUMmtLmFibuzaiZvIoJSxyv6Gt2ZLHCYR8JO9jO5krTkqFUqLjZxu5zmu56uIYa9CIMoNK9eZC-DatMdNjjuBH3vh7AHzzYmNzL_KC4GcAtxcFpVH8am-_iwGDTx8YaLLYR_yoy74C39xZomVeQLd_BW9X0pSQtBPHMwEZPDPHdwwtTzh1tf6mHziJJYvtrm9xIlz2L-il_3H0cV8aFWC8O3o1XOaPJkM5rXcobUv9pD6mQSsAQyPqSY0m6IDa7ihZHAjT0g5ff4OaD6z9AgnCg7kx3cNAqQwklKUNGQfpsjK_7OoY9ZWnkA7VEJppGpfbgzevcDgzHmpBnGF52HjI6lPznZ7eX-R784Ixc_VVct6NwgJNts8byB3xDpFrSUA61q7xg
 \end{verbatim}
-where the number 4321 is your assigned starting page.
-
-Make sure the first page is numbered by commenting out the first page being
-empty on line 46
-\begin{verbatim}
-%\thispagestyle{empty}
+Zieler: \begin{verbatim}
+https://arxiv.org/abs/1311.2901
 \end{verbatim}
-
-
-%-------------------------------------------------------------------------
-\subsection{Type-style and fonts}
-
-Wherever Times is specified, Times Roman may also be used. If neither is
-available on your word processor, please use the font closest in
-appearance to Times to which you have access.
-
-MAIN TITLE. Center the title 1-3/8 inches (3.49 cm) from the top edge of
-the first page. The title should be in Times 14-point, boldface type.
-Capitalize the first letter of nouns, pronouns, verbs, adjectives, and
-adverbs; do not capitalize articles, coordinate conjunctions, or
-prepositions (unless the title begins with such a word). Leave two blank
-lines after the title.
-
-AUTHOR NAME(s) and AFFILIATION(s) are to be centered beneath the title
-and printed in Times 12-point, non-boldface type. This information is to
-be followed by two blank lines.
-
-The ABSTRACT and MAIN TEXT are to be in a two-column format.
-
-MAIN TEXT. Type main text in 10-point Times, single-spaced. Do NOT use
-double-spacing. All paragraphs should be indented 1 pica (approx. 1/6
-inch or 0.422 cm). Make sure your text is fully justified---that is,
-flush left and flush right. Please do not place any additional blank
-lines between paragraphs.
-
-Figure and table captions should be 9-point Roman type as in
-Figures~\ref{fig:onecol} and~\ref{fig:short}.  Short captions should be centred.
-
-\noindent Callouts should be 9-point Helvetica, non-boldface type.
-Initially capitalize only the first word of section titles and first-,
-second-, and third-order headings.
-
-FIRST-ORDER HEADINGS. (For example, {\large \bf 1. Introduction})
-should be Times 12-point boldface, initially capitalized, flush left,
-with one blank line before, and one blank line after.
-
-SECOND-ORDER HEADINGS. (For example, { \bf 1.1. Database elements})
-should be Times 11-point boldface, initially capitalized, flush left,
-with one blank line before, and one after. If you require a third-order
-heading (we discourage it), use 10-point Times, boldface, initially
-capitalized, flush left, preceded by one blank line, followed by a period
-and your text on the same line.
-
-%-------------------------------------------------------------------------
-\subsection{Footnotes}
-
-Please use footnotes\footnote {This is what a footnote looks like.  It
-often distracts the reader from the main flow of the argument.} sparingly.
-Indeed, try to avoid footnotes altogether and include necessary peripheral
-observations in
-the text (within parentheses, if you prefer, as in this sentence).  If you
-wish to use a footnote, place it at the bottom of the column on the page on
-which it is referenced. Use Times 8-point type, single-spaced.
-
-
-%-------------------------------------------------------------------------
-\subsection{References}
-
-List and number all bibliographical references in 9-point Times,
-single-spaced, at the end of your paper. When referenced in the text,
-enclose the citation number in square brackets, for
-example~\cite{Authors14}.  Where appropriate, include the name(s) of
-editors of referenced books.
-
-\begin{table}
-\begin{center}
-\begin{tabular}{|l|c|}
-\hline
-Method & Frobnability \\
-\hline\hline
-Theirs & Frumpy \\
-Yours & Frobbly \\
-Ours & Makes one's heart Frob\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Results.   Ours is better.}
-\end{table}
-
-%-------------------------------------------------------------------------
-\subsection{Illustrations, graphs, and photographs}
-
-All graphics should be centered.  Please ensure that any point you wish to
-make is resolvable in a printed copy of the paper.  Resize fonts in figures
-to match the font in the body text, and choose line widths which render
-effectively in print.  Many readers (and reviewers), even of an electronic
-copy, will choose to print your paper in order to read it.  You cannot
-insist that they do otherwise, and therefore must not assume that they can
-zoom in to see tiny details on a graphic.
-
-When placing figures in \LaTeX, it's almost always best to use
-\verb+\includegraphics+, and to specify the  figure width as a multiple of
-the line width as in the example below
-{\small\begin{verbatim}
-   \usepackage[dvips]{graphicx} ...
-   \includegraphics[width=0.8\linewidth]
-                   {myfile.eps}
-\end{verbatim}
-}
-
-
-%-------------------------------------------------------------------------
-\subsection{Color}
-
-Please refer to the author guidelines on the CVPR 2020 web page for a discussion
-of the use of color in your document.
-
-%------------------------------------------------------------------------
-\section{Final copy}
-
-You must include your signed IEEE copyright release form when you submit
-your finished paper. We MUST have this form before your paper can be
-published in the proceedings.
-
-Please direct any questions to the production editor in charge of these 
-proceedings at the IEEE Computer Society Press: 
-\url{https://www.computer.org/about/contact}. 
-
-
-{\small
-\bibliographystyle{ieee_fullname}
-\bibliography{egbib}
-}
-
+Szegedy: \begin{verbatim} https://arxiv.org/abs/1409.4842 \end{verbatim}
 \end{document}
